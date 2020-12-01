@@ -393,7 +393,7 @@ var arrowHovered = false;
     }
 
         ca=[];
-        
+
         if (im==true) {
             renderer.domElement.addEventListener('touchstart', function(event) {
                 mouse.x = +(event.targetTouches[0].pageX / window.innerWidth) * 2 +-1;
@@ -459,7 +459,7 @@ var arrowHovered = false;
             })
         }
 
-        if (true) {
+        if (im == false) {
               renderer.domElement.addEventListener('mousemove', function(event) {
                 mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
                 mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
@@ -518,18 +518,21 @@ var arrowHovered = false;
                         $(".clickmei").hide();
                         }
                     }
-                    if (intersectsArrow.length > 0) {
-                        document.querySelector('html').style.cursor = 'pointer';
-                        document.querySelector('body').style.cursor = 'pointer';
-                        intersectsArrow[0].object.material = greenArrow;
-                        arrowHovered = true;
-                    } else {
-                        if (arrowHovered) {
-                            arrowleft.material = redArrow;
-                            arrowright.material = redArrow;
-                            arrowHovered = false;
+                    if (!im) {
+                        if (intersectsArrow.length > 0) {
+                            document.querySelector('html').style.cursor = 'pointer';
+                            document.querySelector('body').style.cursor = 'pointer';
+                            intersectsArrow[0].object.material = greenArrow;
+                            arrowHovered = true;
+                        } else {
+                            if (arrowHovered) {
+                                arrowleft.material = redArrow;
+                                arrowright.material = redArrow;
+                                arrowHovered = false;
+                            }
                         }
                     }
+                    
 
 
                 }else{
