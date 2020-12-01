@@ -318,6 +318,14 @@ var arrowHovered = false;
         container.addEventListener('touchmove', function (event) {
           event.preventDefault()
         }, false)
+
+        window.addEventListener('message', function (event) {
+            console.log(`recieved ${event.data} from ${event.origin}`);
+        if (event.data == 'shake') {
+            console.log("shake!");
+            shake();
+        }
+    });
     }
 
     function loadModels() {
@@ -830,7 +838,7 @@ var arrowHovered = false;
         $("#snowfooter").delay(1000).fadeOut(2000);
         $("#btnBringTheMagic").delay(1000).fadeOut(2000);
         if (im==false) {
-            $("#btnBringTheSnow").show().fadeTo( "slow", 1 );
+            $("#btnBringTheSnow").delay(11000).show().fadeTo( "slow", 1 );
         }
         var target={x:37,y:-5,z:45};
         var position={x:camera.position.x,y:camera.position.y,z:camera.position.z};
@@ -864,7 +872,8 @@ var arrowHovered = false;
         }
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
-        renderer.setSize( window.innerWidth, window.innerHeight );
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        composer.setSize(window.innerWidth, window.innerHeight);
     }
 
     function p1flow(){
