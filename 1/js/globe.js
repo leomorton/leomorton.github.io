@@ -496,7 +496,7 @@ var arrowHovered = false;
                         if(ca.includes(intersects[0].object.name)) {
                             document.querySelector('html').style.cursor = 'pointer'
                             document.querySelector('body').style.cursor = 'pointer'
-                        if(intersects[0].object.name=="Christmas_hoerarea"){
+                        if (intersects[0].object.name == "Christmas_hoerarea") {
                             object=scene.getObjectByName("xmas_tree_click",true);outline();}
                         if(intersects[0].object.name=="Pavillion_hoverarea"){
                             object=scene.getObjectByName("Pavillion_click",true);outline();}
@@ -682,17 +682,17 @@ var arrowHovered = false;
                 raycaster.setFromCamera( mouse, camera );
                 var ic1 = raycaster.intersectObjects(model.children);
                     if (ic1.length > 0) {
-                        if(ic1[0].object.name=="Christmas_hoerarea"){pauseMusic();window.parent.postMessage("btnBaubleEntry",'*');}
-                        if(ic1[0].object.name=="Pavillion_hoverarea"){pauseMusic();window.parent.postMessage("Pavillion_click",'*');}
-                        if(ic1[0].object.name=="Pavillion_click"){pauseMusic();window.parent.postMessage("Pavillion_click",'*');}
-                        if(ic1[0].object.name=="Ice_rink_hoverarea"){pauseMusic();window.parent.postMessage("iceRinkBuilding_click",'*');}
-                        if(ic1[0].object.name=="Santas_grotto_hoverarea"){pauseMusic();window.parent.postMessage("santasGrotto_click",'*');}
-                        if(ic1[0].object.name=="Food_stall_hoverarea"){pauseMusic();window.parent.postMessage("btnRecipes",'*');}
-                        if(ic1[0].object.name=="Games_stall_hoverarea"){pauseMusic();window.parent.postMessage("btnIframe_stack",'*');}
-                        if(ic1[0].object.name=="Craft_Stall_hoverarea"){pauseMusic();window.parent.postMessage("marketStall_Crafts_click",'*');}
-                        if(ic1[0].object.name=="Cracker_stall_hoverarea"){pauseMusic();window.parent.postMessage("btnJokes",'*');}
-                        if(ic1[0].object.name=="Bandstand_hoverarea"){pauseMusic();window.parent.postMessage("btnSpotify",'*');}
-                        if(ic1[0].object.name=="Post_box_hoverarea"){pauseMusic();window.parent.postMessage("postBox_click",'*');}
+                        if(ic1[0].object.name=="Christmas_hoerarea" && viewtree){pauseMusic();window.parent.postMessage("btnBaubleEntry",'*');}
+                        if(ic1[0].object.name=="Pavillion_hoverarea" && viewpavilion){pauseMusic();window.parent.postMessage("Pavillion_click",'*');}
+                        if(ic1[0].object.name=="Pavillion_click" && viewpavilion){pauseMusic();window.parent.postMessage("Pavillion_click",'*');}
+                        if(ic1[0].object.name=="Ice_rink_hoverarea" && viewicerink){pauseMusic();window.parent.postMessage("iceRinkBuilding_click",'*');}
+                        if(ic1[0].object.name=="Santas_grotto_hoverarea" && viewsanta){pauseMusic();window.parent.postMessage("santasGrotto_click",'*');}
+                        if(ic1[0].object.name=="Food_stall_hoverarea" && viewmarketleft){pauseMusic();window.parent.postMessage("btnRecipes",'*');}
+                        if(ic1[0].object.name=="Games_stall_hoverarea" && viewmarketleft){pauseMusic();window.parent.postMessage("btnIframe_stack",'*');}
+                        if(ic1[0].object.name=="Craft_Stall_hoverarea" && viewmarketright){pauseMusic();window.parent.postMessage("marketStall_Crafts_click",'*');}
+                        if(ic1[0].object.name=="Cracker_stall_hoverarea" && viewmarketright){pauseMusic();window.parent.postMessage("btnJokes",'*');}
+                        if(ic1[0].object.name=="Bandstand_hoverarea" && viewbandstand){pauseMusic();window.parent.postMessage("btnSpotify",'*');}
+                        if(ic1[0].object.name=="Post_box_hoverarea" && viewpostbox){pauseMusic();window.parent.postMessage("postBox_click",'*');}
                     }
                   var intersects = raycaster.intersectObjects(camera.children);
                     if (intersects.length > 0) { //&& im == false
@@ -876,7 +876,8 @@ var arrowHovered = false;
         composer.setSize(window.innerWidth, window.innerHeight);
     }
 
-    function p1flow(){
+function p1flow() {
+        /*
     	var pm1=new THREE.SpriteMaterial({map:new THREE.TextureLoader().load('http://i.imgur.com/cTALZ.png') } );
         for (var i=0;i<sc;i++){
             p1=new Particle3D(pm1);
@@ -885,6 +886,7 @@ var arrowHovered = false;
             scene.add(p1);
             particles1.push(p1);
         }
+        */
     }
 
     function p2flow(){
