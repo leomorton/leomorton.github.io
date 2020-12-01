@@ -241,8 +241,8 @@
             arrowright.position.set(.75,.5,-2);
         }
         else{
-            arrowright.scale.set(.0008,.0008,.0008);
-            arrowright.position.set(.35,.7,-2);
+            arrowright.scale.set(.0006,.006,.0006);
+            arrowright.position.set(.35,.5,-2);
         }
         arrowright.material.transparent = true;
         arrowright.material.opacity = 1;
