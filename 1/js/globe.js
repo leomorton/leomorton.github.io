@@ -93,7 +93,9 @@
     var santacammobile=new THREE.Vector3(3.9,-5,47);
     var bandstandcammobile=new THREE.Vector3(21,-6,28);
 
-    var arrowright, arrowleft
+var arrowright, arrowleft;
+var redArrow, greenArrow;
+var arrowHovered = false;
 
     var fg=new THREE.Group();
 
@@ -232,9 +234,12 @@
         // clouds.rotation.y=Math.PI;
         // scene.add(clouds);
 
-        var img = new THREE.MeshBasicMaterial({ map:new THREE.TextureLoader().load('img/arrow2.png')}); 
-        img.map.needsUpdate = true;
-        arrowright = new THREE.Mesh(new THREE.PlaneGeometry(200, 200),img);
+        redArrow = new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('img/arrow2.png') }); 
+        greenArrow = new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('img/arrow3.png') }); 
+        greenArrow.transparent = true;
+        greenArrow.opacity = 1;
+        redArrow.map.needsUpdate = true;
+        arrowright = new THREE.Mesh(new THREE.PlaneGeometry(200, 200),redArrow);
         arrowright.overdraw=true
         if (im==false) {
             arrowright.scale.set(.001,.001,.001);
@@ -249,7 +254,7 @@
         arrowright.name="AR";
         //scene.add(camera)
 
-        arrowleft = new THREE.Mesh(new THREE.PlaneGeometry(200, 200),img);
+        arrowleft = new THREE.Mesh(new THREE.PlaneGeometry(200, 200),redArrow);
         arrowleft.overdraw=true
         if (im==false) {
             arrowleft.scale.set(.001,.001,.001);
@@ -357,6 +362,7 @@
                 child.material.opacity = 0; 
             }
         });
+        /*
         var t1 = scene.getObjectByName("Bandstand_hoverarea");
         var t2 = scene.getObjectByName("Food_stall_hoverarea");
         var t3 = scene.getObjectByName("Games_stall_hoverarea");
@@ -371,6 +377,7 @@
         
         var parent = t1.parent;
         //parent.remove( t1,t2,t3,t4,t5,t6,t7,t8,t9,t10 );
+        */
 
         o1=scene.getObjectByName("xmas_tree_click",true);
         o2=scene.getObjectByName("Pavillion_click",true);
@@ -386,7 +393,7 @@
     }
 
         ca=[];
-
+        
         if (im==true) {
             renderer.domElement.addEventListener('touchstart', function(event) {
                 mouse.x = +(event.targetTouches[0].pageX / window.innerWidth) * 2 +-1;
@@ -452,7 +459,7 @@
             })
         }
 
-        if (im==false) {
+        if (true) {
               renderer.domElement.addEventListener('mousemove', function(event) {
                 mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
                 mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
@@ -460,9 +467,11 @@
                 var y = event.clientY;
                 var newposX = x - 50;
                   var newposY = y - 25;
+                  /*
                 if (im==false) {
                     $(".clickmei").css("transform","translate3d("+newposX+"px,"+newposY+"px,0px)");
                 }
+                */
                 if(viewbandstand==true){ca=["Bandstand_hoverarea","bandStand_click"];}
                 if(viewmarketleft==true){ca=["Food_stall_hoverarea","Games_stall_hoverarea"];}
                 if(viewmarketright==true){ca=["Craft_Stall_hoverarea","Cracker_stall_hoverarea"];}
@@ -473,7 +482,8 @@
                 if(viewsanta==true){ca=["Santas_grotto_hoverarea"];}
                 if(stage_0==false&&moving==false) {
                 raycaster.setFromCamera( mouse, camera );
-                  var intersects = raycaster.intersectObjects(model.children);
+                    var intersects = raycaster.intersectObjects(model.children);
+                    var intersectsArrow = raycaster.intersectObjects(camera.children);
                     if (intersects.length > 0) {
                         if(ca.includes(intersects[0].object.name)) {
                             document.querySelector('html').style.cursor = 'pointer'
@@ -500,8 +510,7 @@
                             object=scene.getObjectByName("bandStand_click",true);outline();}
                         if(intersects[0].object.name=="Post_box_hoverarea"){
                             object=scene.getObjectByName("postBox_click",true);outline();}
-                   }
-                    else{
+                    } else {
                         document.querySelector('html').style.cursor = 'default'
                         document.querySelector('body').style.cursor = 'default'
                         INTERSECTED = null;
@@ -509,6 +518,20 @@
                         $(".clickmei").hide();
                         }
                     }
+                    if (intersectsArrow.length > 0) {
+                        document.querySelector('html').style.cursor = 'pointer';
+                        document.querySelector('body').style.cursor = 'pointer';
+                        intersectsArrow[0].object.material = greenArrow;
+                        arrowHovered = true;
+                    } else {
+                        if (arrowHovered) {
+                            arrowleft.material = redArrow;
+                            arrowright.material = redArrow;
+                            arrowHovered = false;
+                        }
+                    }
+
+
                 }else{
                     INTERSECTED = null;
                     outlinePass.selectedObjects = 0;
@@ -535,7 +558,7 @@
                 scene.add(p1);
             }, cammovetime)
         }
-
+        /*
         window.addEventListener('swiped-left', function(e) {
             if (moving==false&&stage_0==false) {
                 camp={x:camera.position.x,y:camera.position.y,z:camera.position.z};
@@ -629,15 +652,16 @@
                             t.easing(TWEEN.Easing.Sinusoidal.InOut).start();mover();   
                         }
                     })
-
-          $(document).on('click touchstart', function () {
+            */
+            $(document).on('click touchstart', function () {
+             console.log(im);
             var bga=document.getElementById("bga");
                 var element = document.getElementById("btnBringTheSnow");
                 if (element.parentNode.querySelector(":hover") == element) {
-                    console.log("on snow")
+                    //console.log("on snow")
                     isoverbutton=true;
                 } else {
-                    console.log("off snow")
+                    //console.log("off snow")
                     isoverbutton=false;
                 }
             let clickObject = {};
@@ -660,7 +684,7 @@
                         if(ic1[0].object.name=="Post_box_hoverarea"){pauseMusic();window.parent.postMessage("postBox_click",'*');}
                     }
                   var intersects = raycaster.intersectObjects(camera.children);
-                    if (intersects.length > 0&&im==false) {
+                    if (intersects.length > 0) { //&& im == false
                         if(intersects[0].object.name=="AR"){
                             camp={x:camera.position.x,y:camera.position.y,z:camera.position.z};
                             scamrot=new THREE.Euler().copy(camera.rotation);
@@ -805,28 +829,28 @@
         if (im==false) {
             $("#btnBringTheSnow").show().fadeTo( "slow", 1 );
         }
-            var target={x:37,y:-5,z:45};
+        var target={x:37,y:-5,z:45};
+        var position={x:camera.position.x,y:camera.position.y,z:camera.position.z};
+        var t=new TWEEN.Tween(position).to(target,3000);
+        t.onUpdate(function(){camera.position.x=position.x;camera.position.y=position.y;camera.position.z=position.z;});
+        t.easing(TWEEN.Easing.Sinusoidal.InOut)
+        t.start();
+        setTimeout(function(){arch();},icz);
+        var t2 = new TWEEN.Tween(model.rotation).onComplete(function(){}).to({ y: "-"+Math.PI*2}, icm).easing(TWEEN.Easing.Sinusoidal.InOut).start();
+        function arch(){
+            var target={x:21,y:-6,z:28};
             var position={x:camera.position.x,y:camera.position.y,z:camera.position.z};
-            var t=new TWEEN.Tween(position).to(target,3000);
+            var t=new TWEEN.Tween(position).to(target,4000);
             t.onUpdate(function(){camera.position.x=position.x;camera.position.y=position.y;camera.position.z=position.z;});
             t.easing(TWEEN.Easing.Sinusoidal.InOut)
+            t.onComplete(function(){stage_0=false;stage_01=true;
+            viewbandstand=true;
+            lightup();
+            camera.add(arrowright);
+            camera.add(arrowleft);
+            });
             t.start();
-            setTimeout(function(){arch();},icz);
-            var t2 = new TWEEN.Tween(model.rotation).onComplete(function(){}).to({ y: "-"+Math.PI*2}, icm).easing(TWEEN.Easing.Sinusoidal.InOut).start();
-            function arch(){
-                var target={x:21,y:-6,z:28};
-                var position={x:camera.position.x,y:camera.position.y,z:camera.position.z};
-                var t=new TWEEN.Tween(position).to(target,4000);
-                t.onUpdate(function(){camera.position.x=position.x;camera.position.y=position.y;camera.position.z=position.z;});
-                t.easing(TWEEN.Easing.Sinusoidal.InOut)
-                t.onComplete(function(){stage_0=false;stage_01=true;
-                viewbandstand=true;
-                    lightup();
-                        camera.add(arrowright);
-                        camera.add(arrowleft);
-                });
-                t.start();
-            }
+        }
     }
         
 
