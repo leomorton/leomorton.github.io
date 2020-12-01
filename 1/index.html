@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Sky Globe</title>
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type='text/javascript' src='js/tween.js'></script>
+<script src="js/shake.js"></script>
+<script src="js/swipe.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://threejs.org/build/three.js"></script>
+<script src="js/particles.js"></script>
+
+<section id="loading-screen">
+    <div id="loader">
+        <!-- <span id="snowflake">&#10052;</span> -->
+    </div>
+</section>
+
+<script type="module" src="js/globe.js"></script>
+    
+<audio id="bga" style="display: none;" src="sounds/magicstorymp3.mp3"></audio>
+<div onclick="togglePlay()" id="sound"><img id="soundbutton" src="img/audio2.png"><img id="soundbuttonmute" src="img/audio2_mute.png"></div>
+<!-- <div onclick="togglePlay()" id="globe"><img src="img/globe.png"></div> -->
+
+<div id="btnBringTheSnow" class="sb">Make it snow!</div>
+<div onclick="play()" id="btnBringTheMagic" class="ktm">Take me in!</div>
+
+<div id="canvas" onclick='click();'>
+
+<!-- <div class="clickmei" id="clickmei">Click Me</div> -->
+
+<div id="snowfooter" class="snowfooter">
+	<img id="snowfooterimg" src="img/snow-footer.png" alt="snow footer">
+</div>
+
+</head>
+
+<script type="text/javascript">
+
+function togglePlay() {
+	var audioElement=document.getElementById("bga");
+    if (audioElement.paused) {
+        $("#soundbutton").show();
+        $("#soundbuttonmute").hide();
+        audioElement.play();
+    }
+    else {
+        $("#soundbutton").hide();
+        $("#soundbuttonmute").show();
+        audioElement.pause();
+    }
+};
+
+</script>
