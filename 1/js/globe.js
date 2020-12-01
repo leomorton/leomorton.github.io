@@ -370,7 +370,7 @@
         var t10 = scene.getObjectByName("Christmas_hoerarea");
         
         var parent = t1.parent;
-        parent.remove( t1,t2,t3,t4,t5,t6,t7,t8,t9,t10 );
+        //parent.remove( t1,t2,t3,t4,t5,t6,t7,t8,t9,t10 );
 
         o1=scene.getObjectByName("xmas_tree_click",true);
         o2=scene.getObjectByName("Pavillion_click",true);
