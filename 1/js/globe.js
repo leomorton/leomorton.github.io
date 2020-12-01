@@ -241,7 +241,7 @@
             arrowright.position.set(.75,.5,-2);
         }
         else{
-            arrowright.scale.set(.0006,.006,.0006);
+            arrowright.scale.set(.0006,.0006,.0006);
             arrowright.position.set(.35,.5,-2);
         }
         arrowright.material.transparent = true;
@@ -256,8 +256,8 @@
             arrowleft.position.set(-.75,.5,-2);
         }
         else{
-            arrowleft.scale.set(.0008,.0008,.0008);
-            arrowleft.position.set(-.35,.7,-2);
+            arrowleft.scale.set(.0006,.0006,.0006);
+            arrowleft.position.set(-.35,.5,-2);
         }
         arrowleft.rotation.z=Math.PI;
         arrowleft.material.transparent = true;
