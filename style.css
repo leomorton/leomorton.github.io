@@ -3,8 +3,8 @@ body {
     overflow: hidden;
     margin: 0;
     height: 100%;
-    background: linear-gradient(-11deg, rgba(0, 141, 255, 1) 0%, rgba(160, 255, 238, 1) 100%);
     background: #e0dacd;
+    background: linear-gradient(2deg, rgba(117, 0, 0, 1) 0%, rgba(255, 42, 0, 1) 32%, rgba(255, 240, 210, 1) 84%);
 }
 
 #c {
