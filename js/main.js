@@ -34,7 +34,7 @@ let fullFade = { value: 1.0 };
 let FOVRadians, hFOVRadians;
 
 const cameraNearClipPlane = 40;
-const cameraFarClipPlane = 1000;
+const cameraFarClipPlane = 1500;
 let aspect = 0;
 let cameraAspect;
 
