@@ -1,0 +1,11 @@
+model-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    background: linear-gradient(2deg, rgba(117, 0, 0, 1) 0%, rgba(255, 42, 0, 1) 32%, rgba(255, 240, 210, 1) 84%);
+    width: auto;
+    height: auto;
+}

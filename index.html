@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Raptor Xmas</title>
-        <link rel="stylesheet" type="text/css" href="style.css" />
-    </head>
-    <body>
-        <script src="./data/data.js"></script>
-        <script type="module" src="./js/main.js"></script>
-        <section id="loading-screen">
-            <div id="loader"></div>
-        </section>
-        <canvas id="c"></canvas>
-        <div id="modal"></div>
-    </body>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Raptor Xmas AR</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+</head>
+<body>
+  <model-viewer src="assets\models\RaptorXmas_medium_Compressed.glb" exposure="0.7" camera-controls min-camera-orbit="-10deg auto auto" max-camera-orbit="80deg auto auto" min-field-of-view="50deg" max-field-of-view="55deg" ar></model-viewer>
+</body>
 </html>
